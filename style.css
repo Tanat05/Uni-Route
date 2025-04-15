@@ -1,57 +1,49 @@
-/* --- START OF FILE style.css --- */
-
-/* --- Reset & Base --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body {
     height: 100%;
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
-    overflow: hidden; /* Prevent body scroll */
-    background-color: #eee; /* Base background for areas outside map */
+    -webkit-tap-highlight-color: transparent;
+    overflow: hidden;
+    background-color: #eee;
 }
 #map {
-    width: 100%; height: 100%; background-color: #f0f0f0; /* Fallback background for map */
-    z-index: 1; /* Ensure map is below controls */
+    width: 100%; height: 100%; background-color: #f0f0f0;
+    z-index: 1;
 }
 
-/* --- CSS Variables (Theme) --- */
 :root {
-    --blur-amount: 6px; /* Slightly reduced blur for better performance/clarity */
-    --controls-bg: rgba(255, 255, 255, 0.75); /* Slightly more opaque */
-    --controls-bg-collapsed: rgba(255, 255, 255, 0.88); /* More opaque when collapsed on mobile */
-    --controls-border: rgba(180, 180, 180, 0.5); /* Slightly darker border */
-    --controls-shadow: 0 4px 18px rgba(0, 0, 0, 0.15); /* Softer shadow */
+    --blur-amount: 6px;
+    --controls-bg: rgba(255, 255, 255, 0.75);
+    --controls-bg-collapsed: rgba(255, 255, 255, 0.88);
+    --controls-border: rgba(180, 180, 180, 0.5);
+    --controls-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
     --controls-radius: 10px;
-    --text-color-primary: #212529; /* Darker primary text */
+    --text-color-primary: #212529;
     --text-color-secondary: #555;
     --primary-accent: #007bff;
     --primary-accent-hover: #0056b3;
     --success-color: #28a745;
     --danger-color: #dc3545;
     --warning-color: #ffc107;
-    --input-bg: rgba(255, 255, 255, 0.95); /* More opaque input */
+    --input-bg: rgba(255, 255, 255, 0.95);
     --input-border: #ced4da;
     --highlight-bg: rgba(0, 123, 255, 0.1);
     --button-secondary-bg: rgba(230, 230, 230, 0.8);
     --button-secondary-hover: rgba(210, 210, 210, 1);
-    --separator-color: rgba(0, 0, 0, 0.12); /* Slightly darker separator */
-    /* Route Info Backgrounds/Colors - Enhanced Contrast */
+    --separator-color: rgba(0, 0, 0, 0.12);
     --info-bg: #e7f3fe; --info-border: #bcdffc; --info-color: #0c5460;
     --success-bg: #d4edda; --success-border: #c3e6cb; --success-color-text: #155724;
     --danger-bg: #f8d7da; --danger-border: #f5c6cb; --danger-color-text: #721c24;
     --warning-bg: #fff3cd; --warning-border: #ffeeba; --warning-color-text: #856404;
 }
 
-
-/* --- Controls Wrapper --- */
 #controls-wrapper {
     position: absolute; top: 10px; left: 10px; z-index: 1000;
-    width: 370px; /* Restored width */
+    width: 370px;
     max-width: calc(100% - 20px);
     transition: width 0.3s ease;
 }
 
-/* --- Controls Panel (#controls) - Desktop Defaults --- */
 #controls {
     width: 100%;
     max-height: calc(100vh - 30px);
@@ -62,9 +54,9 @@ html, body {
     border: 1px solid var(--controls-border);
     box-shadow: var(--controls-shadow);
     padding: 20px;
-    overflow-x: hidden; /* Hide horizontal overflow */
-    overflow-y: auto; /* Allow vertical scrolling */
-    overscroll-behavior-y: contain; /* Prevent parent scroll */
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
     display: flex;
     flex-direction: column;
     font-size: 14px;
@@ -85,7 +77,6 @@ html, body {
     border-top: 1px solid var(--separator-color); padding-top: 20px;
     font-weight: 600; color: #333;
 }
-/* Remove top margin/border for the very first heading or section */
 #controls > h2:first-of-type,
 #controls > .search-container + h2,
 #controls > #searchResults + .route-container > h2 {
@@ -93,10 +84,8 @@ html, body {
 }
 #controls > h1 + h2 { margin-top: 0; padding-top: 0; border-top: none; }
 
-/* Toggle Indicator Span inside H1 */
-.toggle-indicator { display: none; /* Hidden on desktop */ }
+.toggle-indicator { display: none; }
 
-/* --- Search --- */
 .search-container { display: flex; margin-bottom: 12px; }
 #searchInput {
     flex-grow: 1; padding: 10px 14px; border: 1px solid var(--input-border);
@@ -117,125 +106,112 @@ html, body {
 }
 #searchButton:hover { background-color: var(--button-secondary-hover); }
 
-/* Search Results List Styling */
 #searchResults {
-    display: block; /* Ensure visible by default */
+    display: block;
     list-style: none;
-    min-height: 80px; /* Minimum height */
-    max-height: 350px; /* Increased Max Height for Desktop */
+    min-height: 80px;
+    max-height: 350px;
     overflow-y: auto;
     border: 1px solid var(--separator-color);
-    margin-top: 8px; /* Increased space above */
-    margin-bottom: 18px; /* Increased space below */
-    background-color: rgba(255, 255, 255, 0.92); /* More opaque */
+    margin-top: 8px;
+    margin-bottom: 18px;
+    background-color: rgba(255, 255, 255, 0.92);
     border-radius: 6px;
-    /* Ensure smooth scrollbars */
     scrollbar-width: thin;
-    scrollbar-color: #aaa #f0f0f0; /* Adjusted scrollbar track color */
+    scrollbar-color: #aaa #f0f0f0;
 }
 #searchResults::-webkit-scrollbar { width: 8px; }
 #searchResults::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 4px;}
 #searchResults::-webkit-scrollbar-thumb { background-color: #aaa; border-radius: 4px; border: 2px solid #f0f0f0; }
 
-/* UPDATED Search Result List Item */
 #searchResults li {
-    display: flex;                  /* Flexbox 사용 */
-    justify-content: space-between; /* 아이템 양쪽 정렬 */
-    align-items: center;            /* 수직 중앙 정렬 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 11px 15px;
     cursor: default;
     border-bottom: 1px solid var(--separator-color);
     font-size: 0.95em;
     line-height: 1.45;
     transition: background-color 0.15s ease;
-    width: 100%;                    /* 너비 100% */
-    overflow: hidden;               /* li 자체의 내용 넘침 방지 */
-    flex-wrap: nowrap;              /* flex 아이템 줄바꿈 방지 (기본값이지만 명시) */
+    width: 100%;
+    overflow: hidden;
+    flex-wrap: nowrap;
 }
 #searchResults li:last-child { border-bottom: none; }
 #searchResults li:hover:not(.no-coords):not(.info-li) { background-color: var(--highlight-bg); }
 #searchResults li.no-coords { color: #888; font-style: italic; background: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(0,0,0,0.02) 5px, rgba(0,0,0,0.02) 10px); }
 #searchResults li.info-li { padding: 15px; text-align: center; color: #777; font-style: italic; justify-content: center; }
 
-/* UPDATED Result Text Area */
 .result-text {
-    flex-grow: 1;           /* 남은 공간 차지 */
-    flex-shrink: 1;         /* 공간 부족 시 줄어들 수 있도록 허용 */
+    flex-grow: 1;
+    flex-shrink: 1;
     margin-right: 10px;
-    overflow: hidden;         /* <<< 중요: 내용 넘칠 경우 숨김 */
-    text-overflow: ellipsis;  /* <<< 중요: 넘치는 부분 ... 처리 */
-    white-space: nowrap;      /* <<< 중요: 줄바꿈 방지 */
-    min-width: 0;           /* <<< 중요: flex 아이템이 내용보다 작아질 수 있게 함 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
 }
 .result-text .facility-type { font-size: 0.9em; color: #555; margin-left: 5px; }
 
-/* UPDATED Result Actions (Button Container) */
 .result-actions {
-    display: flex;          /* 버튼들을 가로로 배치 */
-    flex-shrink: 0;         /* 버튼 영역은 줄어들지 않음 */
-    align-items: center;    /* 버튼들 수직 정렬 */
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
 }
 .result-actions button {
     padding: 5px 9px; font-size: 0.85em; cursor: pointer;
     border: 1px solid #bbb; border-radius: 4px; margin-left: 5px;
-    white-space: nowrap; /* 버튼 내 텍스트 줄바꿈 방지 */
+    white-space: nowrap;
     transition: background-color 0.2s ease, border-color 0.2s ease;
     background-color: rgba(240, 240, 240, 0.9);
-    flex-shrink: 0; /* 개별 버튼도 줄어들지 않음 */
+    flex-shrink: 0;
 }
 .result-actions button.set-start { background-color: #e3f2fd; border-color: #bbdefb; }
 .result-actions button.set-start:hover { background-color: #bbdefb; }
 .result-actions button.set-end { background-color: #ffebee; border-color: #ffcdd2; }
 .result-actions button.set-end:hover { background-color: #ffcdd2; }
-/* End UPDATED Search Result Styles */
 
-
-/* --- Route Finder --- */
 .route-container { margin-bottom: 20px; }
 .route-points { margin-bottom: 15px; }
 
-/* UPDATED Start/End Point Display */
 .point-display {
-    display: flex;          /* Use flexbox for alignment */
-    align-items: center;    /* Vertically center items */
+    display: flex;
+    align-items: center;
     margin-bottom: 10px;
     font-size: 0.95em;
-    gap: 8px;               /* Add a small gap between label and text box */
-    width: 100%;            /* 부모 요소의 전체 너비 사용 */
+    gap: 8px;
+    width: 100%;
 }
-.point-display span:first-child { /* The label (출발지/도착지) */
-    width: 55px;            /* Fixed width for the label */
+.point-display span:first-child {
+    width: 55px;
     font-weight: 600;
-    flex-shrink: 0;         /* Prevent label from shrinking */
+    flex-shrink: 0;
     color: var(--text-color-secondary);
-    text-align: left;       /* Ensure label text is left-aligned */
-    line-height: 1.4;       /* 텍스트 박스와 높이 맞춤 */
+    text-align: left;
+    line-height: 1.4;
 }
-.point-display span:nth-child(2) { /* The location text box (#startPointDisplay / #endPointDisplay) */
-    flex-grow: 1;           /* Allow text box to take all remaining space */
-    text-align: right;      /* <<< ALIGN TEXT CONTENT TO THE RIGHT */
-    overflow: hidden;         /* 내용 넘칠 경우 숨김 */
-    text-overflow: ellipsis;  /* 넘치는 텍스트는 ... 처리 */
-    white-space: nowrap;      /* 줄바꿈 방지 */
+.point-display span:nth-child(2) {
+    flex-grow: 1;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     background-color: rgba(238, 238, 238, 0.8);
     padding: 8px 12px;
     border-radius: 6px;
     border: 1px solid #ddd;
-    min-height: 34px;       /* Maintain minimum height */
+    min-height: 34px;
     line-height: 1.4;
     color: var(--text-color-secondary);
     font-style: italic;
-    /* display, vertical-align 등 불필요/충돌 속성 제거 */
 }
-/* 선택된 지점 스타일 */
 .point-display span:nth-child(2):not(:empty)[title] {
     font-style: normal;
     color: var(--text-color-primary);
-    background-color: rgba(224, 234, 245, 0.8); /* Optional: Highlight background */
+    background-color: rgba(224, 234, 245, 0.8);
 }
-/* End UPDATED Start/End Point Display */
 
-/* Route Preferences */
 #route-preferences {
     margin-top: 15px; margin-bottom: 12px; padding: 12px 14px;
     background-color: rgba(240, 240, 240, 0.7); border-radius: 6px; border: 1px solid rgba(0,0,0,0.07);
@@ -267,7 +243,6 @@ html, body {
 
 .route-buttons { display: flex; gap: 12px; margin-top: 18px; }
 
-/* --- General Buttons --- */
 .general-button {
     flex-grow: 1; padding: 11px; color: white; border: none; border-radius: 6px; cursor: pointer;
     font-size: 1em; font-weight: 500; text-align: center;
@@ -281,7 +256,6 @@ html, body {
 #locateMeButton { background-color: var(--primary-accent); }
 #locateMeButton:hover { background-color: var(--primary-accent-hover); }
 
-/* --- Facility Type Selector --- */
 #facility-type-selector-container { margin-top: 20px; }
 #facility-type-selector { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 5px; border: none; border-radius: 6px; background-color: transparent; }
 .facility-type-button {
@@ -292,7 +266,6 @@ html, body {
 .facility-type-button:hover { background-color: rgba(245, 245, 245, 1); border-color: #bbb; }
 .facility-type-button.active { background-color: var(--primary-accent); color: white; border-color: var(--primary-accent); font-weight: bold; }
 
-/* Facility List */
 #facilityListContainer { margin-top: 15px; }
 #facilityListContainer h4 { padding-left: 5px; margin-bottom: 8px; font-size: 1em; color: #444; font-weight: 600; }
 #facilityList {
@@ -319,7 +292,6 @@ html, body {
 #facilityList .no-facilities { padding: 15px; text-align: center; color: #888; font-style: italic; cursor: default; }
 #facilityList .no-facilities:hover { background-color: transparent; }
 
-/* --- Admin Controls --- */
 #admin-controls { display: none; margin-top: 25px; border-top: 1px solid var(--separator-color); padding-top: 20px; }
 #admin-controls h2 { margin-top: 0; border-top: none; padding-top: 0; margin-bottom: 10px; }
 #admin-info { font-size: 0.85em; margin-bottom: 15px; background-color: #fffde7; padding: 12px; border-radius: 4px; border: 1px solid #fff9c4; line-height: 1.5; color: #5f4300; }
@@ -331,12 +303,10 @@ html, body {
 #adminFeedback { color: var(--success-color); font-size: 0.9em; margin-top: 12px; min-height: 1.3em; text-align: center; font-weight: 500; }
 #adminFeedback.error { color: var(--danger-color-text); font-weight: bold; }
 
-/* Admin Node/Edge Styles */
 .admin-node-marker span { display: block; transition: all 0.2s ease; }
 .admin-node-marker span:hover { transform: scale(1.3); box-shadow: 0 0 8px black; cursor: pointer; }
 .admin-edge-hit-area { cursor: pointer; }
 
-/* --- Popups and Icons --- */
 .leaflet-popup-content-wrapper { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); border-radius: 8px; box-shadow: var(--controls-shadow); border: 1px solid var(--controls-border); }
 .leaflet-popup-content { font-size: 13px; line-height: 1.6; margin: 12px 18px; color: var(--text-color-primary); }
 .leaflet-popup-tip { background: rgba(255, 255, 255, 0.9); }
@@ -344,7 +314,6 @@ html, body {
 .leaflet-popup { z-index: 1100 !important; }
 .facility-icon { z-index: 750 !important; }
 
-/* User Location Marker Style */
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7); } 70% { box-shadow: 0 0 0 12px rgba(0, 123, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); } }
 .user-location-marker { background-color: #007bff; width: 16px; height: 16px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3); z-index: 950 !important; animation: pulse 1.8s infinite ease-out; }
 
@@ -352,13 +321,11 @@ html, body {
 .leaflet-marker-icon.leaflet-div-icon.indoor-segment-marker div { transition: background-color 0.2s ease, transform 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
 .leaflet-marker-icon.leaflet-div-icon.indoor-segment-marker div:hover { background-color: #4CAF50 !important; transform: scale(1.05); box-shadow: 0 2px 5px rgba(0,0,0,0.4); }
 
-/* Context Menu / Popup Buttons */
 .popup-button { display: block; width: 100%; padding: 9px 12px; margin-top: 8px; font-size: 0.95em; cursor: pointer; border: 1px solid #ccc; border-radius: 5px; background-color: var(--button-secondary-bg); color: var(--text-color-primary); text-align: center; transition: background-color 0.2s ease, border-color 0.2s ease; box-sizing: border-box; }
 .popup-button:hover { background-color: var(--button-secondary-hover); border-color: #bbb; }
 .popup-button.delete-button { background-color: #f8d7da; border-color: #f1c1c7; color: #721c24; font-weight: 500; }
 .popup-button.delete-button:hover { background-color: #f5c6cb; }
 
-/* --- Indoor Map Viewer --- */
 #indoor-map-view { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1200; display: none; justify-content: center; align-items: center; padding: 15px; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
 #indoor-map-view.visible { display: flex; opacity: 1; }
 #indoor-map-container { background: white; border-radius: var(--controls-radius); border: 1px solid #ccc; box-shadow: 0 8px 30px rgba(0,0,0,0.2); max-width: 90vw; max-height: 90vh; width: 850px; height: auto; display: flex; flex-direction: column; overflow: hidden; }
@@ -376,11 +343,9 @@ html, body {
 #indoor-map-controls label { margin-right: 10px; font-weight: 500; color: var(--text-color-secondary); }
 #indoor-floor-selector { padding: 8px 14px; border-radius: 5px; border: 1px solid var(--input-border); font-size: 1em; background-color: white; }
 
-/* --- Mobile Responsiveness --- */
 @media (max-width: 600px) {
     #controls-wrapper { width: calc(100% - 20px); left: 10px; top: 10px; }
 
-    /* Collapsed State */
     #controls:not(.controls-expanded) {
         max-height: 52px; padding: 0 15px; overflow: hidden; border-radius: 8px;
         display: flex; align-items: center; background: var(--controls-bg-collapsed);
@@ -399,7 +364,6 @@ html, body {
         font-size: 0.7em; color: var(--text-color-secondary);
     }
 
-    /* Expanded State */
     #controls.controls-expanded {
         max-height: 75vh; padding: 15px; overflow-y: auto; border-radius: var(--controls-radius);
         display: flex; flex-direction: column; align-items: stretch; background: var(--controls-bg);
@@ -417,25 +381,22 @@ html, body {
          font-size: 0.7em; color: var(--text-color-secondary);
     }
 
-    /* Ensure children are visible when expanded */
     #controls.controls-expanded > *:not(h1) { display: block; opacity: 1; visibility: visible; pointer-events: auto; }
     #controls.controls-expanded > .search-container { display: flex; }
     #controls.controls-expanded > .route-container .route-buttons { display: flex; }
     #controls.controls-expanded > .route-container .preference-options { display: flex; }
     #controls.controls-expanded > #facility-type-selector-container #facility-type-selector { display: flex; }
 
-    /* Search Results visibility and sizing when expanded on mobile */
     #controls.controls-expanded > #searchResults {
-        display: block; /* Explicitly show */
-        min-height: 70px; /* Mobile min height */
-        max-height: 40vh; /* Use VH units */
+        display: block;
+        min-height: 70px;
+        max-height: 40vh;
         margin-top: 8px;
         margin-bottom: 15px;
     }
 
-    #controls.controls-expanded > #admin-controls { display: none; } /* Still hidden by default, shown by JS */
+    #controls.controls-expanded > #admin-controls { display: none; }
 
-    /* Other 600px Styles */
     #searchInput, #searchButton { padding: 11px; font-size: 0.95em; }
     .general-button { padding: 11px; font-size: 0.95em; }
     .point-display span:first-child { width: 50px; }
@@ -449,7 +410,6 @@ html, body {
     #indoor-floor-selector { padding: 8px 12px; font-size: 0.95em; }
 }
 
-/* --- Very small screens --- */
 @media (max-width: 400px) {
      #controls-wrapper { width: calc(100% - 16px); left: 8px; top: 8px; }
      #controls.controls-expanded { padding: 12px; font-size: 13px; max-height: 70vh; }
@@ -464,11 +424,10 @@ html, body {
      #controls.controls-expanded > #facility-type-selector-container #facility-type-selector { gap: 5px; }
 
      #controls.controls-expanded > #searchResults {
-        max-height: 35vh; /* Adjusted VH */
+        max-height: 35vh;
         min-height: 60px;
      }
 
-     /* Other 400px adjustments */
      #searchInput, #searchButton { padding: 9px; }
      #searchResults li { padding: 8px 10px; font-size: 0.9em; }
      .result-actions button { padding: 4px 7px; font-size: 0.8em;}
