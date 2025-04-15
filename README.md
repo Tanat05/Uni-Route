@@ -1,16 +1,16 @@
-📍 Uni-Route (유니루트)
+# 📍 Uni-Route (유니루트)
 
 캠퍼스 생활을 한층 더 편리하게 만들어 줄 캠퍼스 안내 지도 서비스입니다. 🗺️
 
 ⚠️ 중요: 이 코드는 순천향대학교 캠퍼스에 맞춤화되어 있습니다. 다른 학교 캠퍼스에서 사용하려면 아래 설명된 설정 파일(*.json)의 수정이 반드시 필요합니다.
 
-🚀 Preview
+# 🚀 Preview
 
 서비스 미리보기: https://tanat.kr/soon/
 
 ![alt text](https://github.com/user-attachments/assets/c18ac273-6e4e-4273-b202-f133d0849378)
 
-✨ 주요 기능
+# ✨ 주요 기능
 
 - 캠퍼스 지도: 상세한 캠퍼스 지도를 제공합니다.
 
@@ -22,11 +22,11 @@
 
 - 관리자 모드: 웹 인터페이스를 통해 경로 노드와 엣지를 시각적으로 편집할 수 있습니다.
 
-🛠️ 설정 (Configuration)
+# 🛠️ 설정 (Configuration)
 
 Uni-Route는 여러 JSON 파일을 통해 캠퍼스 데이터를 설정합니다.
 
-1. config.json - 기본 지도 설정
+## 1. config.json - 기본 지도 설정
 
 지도가 처음 열릴 때 표시될 기본 위치(중심 좌표)를 설정합니다.
 
@@ -42,7 +42,7 @@ Uni-Route는 여러 JSON 파일을 통해 캠퍼스 데이터를 설정합니다
 }
 ```
 
-2. buildings.json - 건물 정보
+## 2. buildings.json - 건물 정보
 
 캠퍼스 내 건물들의 정보를 정의합니다.
 
@@ -73,7 +73,7 @@ Uni-Route는 여러 JSON 파일을 통해 캠퍼스 데이터를 설정합니다
 ]
 ```
 
-3. classrooms.json - 강의실 정보
+## 3. classrooms.json - 강의실 정보
 
 각 건물 내 강의실의 상세 정보를 정의합니다.
 
@@ -101,7 +101,7 @@ Uni-Route는 여러 JSON 파일을 통해 캠퍼스 데이터를 설정합니다
 ]
 ```
 
-4. facilities.json - 편의시설 정보
+## 4. facilities.json - 편의시설 정보
 
 식당, 카페, 은행 등 캠퍼스 내 편의시설 정보를 정의합니다.
 
@@ -138,7 +138,7 @@ Uni-Route는 여러 JSON 파일을 통해 캠퍼스 데이터를 설정합니다
 ]
 ```
 
-5. pathNodes.json & pathEdges.json - 경로 정보
+## 5. pathNodes.json & pathEdges.json - 경로 정보
 
 캠퍼스 내 이동 경로를 정의하는 노드(지점)와 엣지(연결선) 데이터입니다.
 
@@ -146,7 +146,7 @@ Uni-Route는 여러 JSON 파일을 통해 캠퍼스 데이터를 설정합니다
 
 - 적용 방법: 관리자 모드에서 노드와 엣지를 모두 수정한 후, '내보내기(Export)' 기능을 통해 pathNodes.json과 pathEdges.json 파일을 다운로드 받아 프로젝트에 적용하면 됩니다.
 
-📌 Tip: 좌표 얻기
+# 📌 Tip: 좌표 얻기
 
 지도 상의 특정 위치의 위도(Latitude)와 경도(Longitude)를 쉽게 얻을 수 있습니다.
 
@@ -156,7 +156,7 @@ Uni-Route는 여러 JSON 파일을 통해 캠퍼스 데이터를 설정합니다
 
 클릭한 지점의 위도와 경도 좌표가 화면에 표시됩니다. 이 좌표를 config.json, buildings.json, facilities.json 등의 설정 파일에 활용하세요.
 
-📜 Credits & License
+# 📜 Credits & License
 
 - 지도 데이터: © OpenStreetMap contributors
 
