@@ -1,5 +1,3 @@
-Okay, here's a revised version of your README, incorporating better structure, formatting, and clarity using Markdown.
-
 📍 Uni-Route (유니루트)
 
 캠퍼스 생활을 한층 더 편리하게 만들어 줄 캠퍼스 안내 지도 서비스입니다. 🗺️
