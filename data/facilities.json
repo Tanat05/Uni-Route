@@ -1,0 +1,19 @@
+[
+    { "id": "F01", "name": "GS25 순천향대향설1관점", "type": "편의점", "lat": null, "lng": null, "buildingId": "B16", "description": "1층", "color": "#3498DB" },
+    { "id": "F02", "name": "GS25 순천향대향설2관점", "type": "편의점", "lat": null, "lng": null, "buildingId": "B34", "description": "B1층", "color": "#3498DB" },
+    { "id": "F03", "name": "GS25 순천향대향설3관점", "type": "편의점", "lat": null, "lng": null, "buildingId": "B35", "description": "B1층", "color": "#3498DB" },
+    { "id": "F04", "name": "GS25 순천향대유니토피아점", "type": "편의점", "lat": null, "lng": null, "buildingId": "B17", "description": "1층", "color": "#3498DB" },
+    { "id": "F05", "name": "GS25 순천향대학성사점", "type": "편의점", "lat": null, "lng": null, "buildingId": "B37", "description": "1층이겠지 뭐", "color": "#3498DB" },
+    { "id": "F06", "name": "GS25 순천향대공학관점", "type": "편의점", "lat": null, "lng": null, "buildingId": "B06", "description": "1층", "color": "#3498DB" },
+    { "id": "F07", "name": "GS25 순천향대자연과학관점", "type": "편의점", "lat": null, "lng": null, "buildingId": "B02", "description": "1층", "color": "#3498DB" },
+    { "id": "F08", "name": "GS25 순천향대인문과학관점", "type": "편의점", "lat": null, "lng": null, "buildingId": "B04", "description": "1층", "color": "#3498DB" },
+    { "id": "F09", "name": "GS25 순천향대미디어랩스관점", "type": "편의점", "lat": null, "lng": null, "buildingId": "B14", "description": "2층", "color": "#3498DB"},
+    {"id": "F10", "name": "그라찌에 순천향대피닉스광장점", "type": "카페", "lat": 36.7712, "lng": 126.9326, "buildingId": null, "description": "", "color": "#ff5555" },
+    { "id": "F11", "name": "그라찌에 순천향대향설1관점", "type": "카페", "lat": null, "lng": null, "buildingId": "B16", "description": "4층", "color": "#ff5555" },
+    { "id": "F12", "name": "그라찌에 순천향대향설2관점", "type": "카페", "lat": null, "lng": null, "buildingId": "B34", "description": "1층", "color": "#ff5555" },
+    { "id": "F13", "name": "증명서 발급기", "type": "증명서 발급기", "lat": null, "lng": null, "buildingId": "B14", "description": "2층", "color": "#ffffff" },
+    { "id": "F14", "name": "증명서 발급기", "type": "증명서 발급기", "lat": null, "lng": null, "buildingId": "B17", "description": "알 수 없음", "color": "#ffffff" },
+    { "id": "F15", "name": "증명서 발급기", "type": "증명서 발급기", "lat": null, "lng": null, "buildingId": "B48", "description": "알 수 없음", "color": "#ffffff"},
+    { "id": "F16", "name": "신한은행 순천향대학교", "type": "은행", "lat": null, "lng": null, "buildingId": "B05", "description": "1층", "color": "#6799FF" },
+    { "id": "F17", "name": "우체국", "type": "우체국", "lat": null, "lng": null, "buildingId": "B16", "description": "1층", "color": "#DB3A00" }
+]

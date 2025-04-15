@@ -1,0 +1,8 @@
+[
+    { "id": "C001", "buildingId": "B04", "floor": 1, "room": "128", "fullName": "인문과학관 대강당"},
+    { "id": "C002", "buildingId": "B11", "floor": 2, "room": "204", "fullName": "학예관 VR studio"},
+    { "id": "C003", "buildingId": "B16", "floor": 1, "room": "108", "fullName": "향설생활관1 무용실"},
+    { "id": "C004", "buildingId": "B16", "floor": 1, "room": "111", "fullName": "향설생활관1 음악실2"},
+    { "id": "C005", "buildingId": "B16", "floor": 1, "room": "112", "fullName": "향설생활관1 음악실3"},
+    { "id": "C006", "buildingId": "B16", "floor": 1, "room": "113", "fullName": "향설생활관1 음악실4"}
+]

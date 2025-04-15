@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>순천향대학교 캠퍼스 맵</title>
+
+    <meta name="description" content="순천향대학교 캠퍼스 맵 - 건물, 강의실, 시설 검색 및 길찾기">
+    <meta name="author" content="순천향대학교">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://campus-map.sch.ac.kr/">
+    <meta property="og:title" content="순천향대학교 캠퍼스 맵">
+    <meta property="og:description" content="순천향대학교 캠퍼스 맵 - 건물, 강의실, 시설 검색 및 길찾기">
+    <meta property="og:image" content="https://campus-map.sch.ac.kr/images/sch-preview.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://campus-map.sch.ac.kr/">
+    <meta name="twitter:title" content="순천향대학교 캠퍼스 맵">
+    <meta name="twitter:description" content="순천향대학교 캠퍼스 맵 - 건물, 강의실, 시설 검색 및 길찾기">
+    <meta name="twitter:image" content="https://campus-map.sch.ac.kr/images/sch-preview.jpg">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+    <link rel="stylesheet" href="style.css"> <!-- Ensure this points to your CSS file -->
+</head>
+<body>
+    <div id="map"></div>
+
+    <div id="controls-wrapper">
+        <div id="controls"> <!-- Initial state determined by CSS media queries -->
+            <h1>순천향대학교 캠퍼스 맵<span class="toggle-indicator">▼</span></h1>
+
+            <h2>장소 검색</h2>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="건물/강의실/시설명, 코드, 초성">
+                <button id="searchButton">검색</button>
+            </div>
+            <ul id="searchResults"></ul>
+
+            <div class="route-container">
+                <h2>길찾기</h2>
+                <div class="route-points">
+                    <div class="point-display"><span>출발지:</span><span id="startPointDisplay">맵 우클릭 또는 검색 후 선택</span></div>
+                    <div class="point-display"><span>도착지:</span><span id="endPointDisplay">맵 우클릭 또는 검색 후 선택</span></div>
+                </div>
+
+                <!-- NEW: Route Preferences -->
+                <div id="route-preferences">
+                    <label>경로 유형:</label>
+                    <div class="preference-options">
+                        <label><input type="radio" name="routePref" value="fastest" checked> 최단 시간</label>
+                        <label><input type="radio" name="routePref" value="no_stairs"> 계단 회피</label>
+                        <label><input type="radio" name="routePref" value="wheelchair"> 휠체어 가능</label>
+                        <label><input type="radio" name="routePref" value="no_dirt"> 비포장 회피</label>
+                    </div>
+                </div>
+                <!-- END: Route Preferences -->
+
+                <!-- routeInfo class will be updated by JS -->
+                <div id="routeInfo" class="status-info">출발지와 도착지를 선택하세요.</div>
+                <div class="route-buttons">
+                    <button id="locateMeButton" class="general-button">내 위치</button>
+                    <button id="resetButton" class="general-button">초기화</button>
+                </div>
+            </div> <!-- End route-container -->
+
+            <div id="facility-type-selector-container">
+                <h2>시설 보기</h2>
+                <div id="facility-type-selector"></div>
+                <!-- NEW: Facility List Container -->
+                <div id="facilityListContainer" style="display: none; margin-top: 15px;">
+                    <h4 id="facilityListTitle" style="margin-bottom: 8px; font-size: 1em; color: #555;">시설 목록</h4>
+                    <ul id="facilityList" style="list-style: none; max-height: 180px; overflow-y: auto; border: 1px solid var(--separator-color); border-radius: 6px; background-color: rgba(255, 255, 255, 0.8);">
+                        <!-- Facility items will be populated here by JS -->
+                    </ul>
+                </div>
+                 <!-- END: Facility List Container -->
+            </div>
+
+
+            <div id="admin-controls">
+                <h2>관리자 도구</h2>
+                <div id="admin-info">
+                    우클릭: 노드 추가 (팝업)<br>
+                    노드 클릭: 노드 선택/삭제/엣지 연결<br>
+                    엣지 클릭: 엣지 삭제
+                </div>
+                <button id="exportNodesButton" class="admin-button">노드 내보내기</button>
+                <button id="exportEdgesButton" class="admin-button">엣지 내보내기</button>
+                <div id="adminFeedback"></div>
+            </div> <!-- End admin-controls -->
+
+        </div> <!-- End controls -->
+    </div> <!-- End controls-wrapper -->
+
+    <div id="indoor-map-view">
+        <div id="indoor-map-container">
+            <div id="indoor-map-header">
+                <h3 id="indoor-building-name">건물 이름</h3>
+                <button id="indoor-map-close">×</button>
+            </div>
+            <div id="indoor-map-content">
+                <div id="indoor-map-image-container">
+                    <img id="indoor-map-image" src="" alt="건물 내부 지도">
+                    <svg id="indoor-path-overlay" width="100%" height="100%"></svg> <!-- Removed inline style -->
+                </div>
+                <div id="indoor-map-controls">
+                    <label for="indoor-floor-selector">층 선택:</label>
+                    <select id="indoor-floor-selector">
+                        <option value="">--</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script_leaflet.js" defer></script>
+</body>
+</html>
